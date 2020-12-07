@@ -24,6 +24,9 @@ inputs:
   env:
     description: 'Build-time environment variables'
     required: false
+  publish:
+    description: 'Set true to push image to registry'
+    required: false
 outputs:
   command:
     description: 'build command executed'

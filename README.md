@@ -19,6 +19,7 @@ on: [push]
         path: 'path/to/foo-app/'
         builder: 'gcr.io/paketo-buildpacks/builder:base'
         env: 'HELLO=WORLD FOO=BAR BAZ'
+        publish: true
 
     - name: Push image
 ```
@@ -32,6 +33,7 @@ on: [push]
 - `builder` : (required) Builder to use.
 - `buildpacks` : (optional) URLs or Paths to Custom buildpacks, space separated.
 - `env` : (optional) Environment variables, space separated.
+- `publish` : (optional) Set to `true` if you want to push to registry
 
 > See "[Cloud Native Buildpack Documentation · Environment variables](https://buildpacks.io/docs/app-developer-guide/environment-variables/)" for environment valiables.
 

@@ -22,7 +22,12 @@ if [ -n "$INPUT_BUILDPACKS" ]; then
   done
 fi
 
-command="pack build ${INPUT_IMAGE}:${INPUT_TAG} ${env_str} --path ${INPUT_PATH} ${buildpacks} --builder ${INPUT_BUILDER}"
+publish=""
+if [ -n "$INPUT_PUBLISH" ]; then
+  publish=" --publish"
+fi
+
+command="pack build ${INPUT_IMAGE}:${INPUT_TAG} ${env_str} --path ${INPUT_PATH} ${buildpacks} --builder ${INPUT_BUILDER} ${publish}"
 echo "::set-output name=command::${command}"
 
 sh -c "${command}"
