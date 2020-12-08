@@ -8,7 +8,7 @@ RUN apk add --update --no-cache \
         ca-certificates \
         groff \
         less \
-        python \
+        python3 \
         py-pip \
     && rm -rf /var/cache/apk/* \
     && pip install pip --upgrade \
