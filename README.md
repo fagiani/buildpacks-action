@@ -36,6 +36,10 @@ on: [push]
 - `registry` : (optional) Registry to push image
 - `publish` : (optional) Set to `true` if you want to push to registry
 
+## Outputs
+- `command` : The actual pack command issued
+- `image-name` : The composition of the image name
+
 > See "[Cloud Native Buildpack Documentation · Environment variables](https://buildpacks.io/docs/app-developer-guide/environment-variables/)" for environment valiables.
 
 
