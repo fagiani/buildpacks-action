@@ -32,6 +32,8 @@ inputs:
 outputs:
   command:
     description: 'build command executed'
+  image-name:
+    description: 'image full name with registry and tag'
 
 runs:
   using: 'docker'

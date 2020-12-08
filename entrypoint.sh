@@ -36,5 +36,5 @@ fi
 
 command="pack build ${image_name} ${env_str} --path ${INPUT_PATH} ${buildpacks} --builder ${INPUT_BUILDER} ${publish}"
 echo "::set-output name=command::${command}"
-
+echo "::set-output name=image-name::${image_name}"
 sh -c "${command}"
