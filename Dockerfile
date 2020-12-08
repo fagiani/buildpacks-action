@@ -11,6 +11,8 @@ RUN apk add --update --no-cache \
         build-base \
         python3 \
         python3-dev \
+        libffi-dev \
+        openssl-dev \
         py-pip \
     && rm -rf /var/cache/apk/* \
     && pip install pip --upgrade \
