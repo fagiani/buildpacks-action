@@ -33,6 +33,7 @@ on: [push]
 - `builder` : (required) Builder to use.
 - `buildpacks` : (optional) URLs or Paths to Custom buildpacks, space separated.
 - `env` : (optional) Environment variables, space separated.
+- `registry` : (optional) Registry to push image
 - `publish` : (optional) Set to `true` if you want to push to registry
 
 > See "[Cloud Native Buildpack Documentation · Environment variables](https://buildpacks.io/docs/app-developer-guide/environment-variables/)" for environment valiables.

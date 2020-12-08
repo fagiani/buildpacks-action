@@ -24,6 +24,8 @@ inputs:
   env:
     description: 'Build-time environment variables'
     required: false
+  registry:
+    description: 'Image repository for publishing'
   publish:
     description: 'Set true to push image to registry'
     required: false

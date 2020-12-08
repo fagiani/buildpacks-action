@@ -2,6 +2,13 @@
 
 set -e
 
+image_name=""
+if [ -n "$INPUT_REGISTRY" ]; then
+  image_name="${INPUT_REGISTRY}/${INPUT_IMAGE}:${INPUT_TAG}"
+else
+  image_name="${INPUT_IMAGE}:${INPUT_TAG}"
+fi
+
 env_str=""
 if [ -n "$INPUT_ENV" ]; then
   arr=(${INPUT_ENV})
@@ -27,7 +34,7 @@ if [ -n "$INPUT_PUBLISH" ]; then
   publish=" --publish"
 fi
 
-command="pack build ${INPUT_IMAGE}:${INPUT_TAG} ${env_str} --path ${INPUT_PATH} ${buildpacks} --builder ${INPUT_BUILDER} ${publish}"
+command="pack build ${image_name} ${env_str} --path ${INPUT_PATH} ${buildpacks} --builder ${INPUT_BUILDER} ${publish}"
 echo "::set-output name=command::${command}"
 
 sh -c "${command}"
