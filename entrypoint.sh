@@ -37,4 +37,5 @@ fi
 command="pack build ${image_name} ${env_str} --path ${INPUT_PATH} ${buildpacks} --builder ${INPUT_BUILDER} ${publish}"
 echo "::set-output name=command::${command}"
 echo "::set-output name=image-name::${image_name}"
+aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${INPUT_REGISTRY}
 sh -c "${command}"
