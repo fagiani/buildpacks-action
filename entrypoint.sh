@@ -1,6 +1,6 @@
 #!/bin/bash -l
 
-set -e
+set -ex
 
 image_name=""
 if [ -n "$INPUT_REGISTRY" ]; then
