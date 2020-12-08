@@ -16,7 +16,7 @@ RUN apk add --update --no-cache \
         py-pip \
     && rm -rf /var/cache/apk/* \
     && pip install pip --upgrade \
-    && pip install aws && \
+    && pip install awscli && \
     curl -LO https://github.com/buildpacks/pack/releases/download/${VERSION}/pack-${VERSION}-linux.tgz && \
     tar xfz pack-${VERSION}-linux.tgz && \
     mv pack /usr/bin/
