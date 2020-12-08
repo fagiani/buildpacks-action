@@ -10,6 +10,7 @@ RUN apk add --update --no-cache \
         less \
         build-base \
         python3 \
+        python3-dev \
         py-pip \
     && rm -rf /var/cache/apk/* \
     && pip install pip --upgrade \
