@@ -60,3 +60,34 @@ on: [push]
         builder: 'cnbs/sample-builder:alpine'
         buildpacks: 'samples/buildpacks/java-maven samples/buildpacks/hello-processes/ cnbs/sample-package:hello-universe'
 ```
+
+Example of using AWS ECR with buildpack publish
+
+````yaml
+on: [push]
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+
+    - id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+
+    - name: Build image and publish to ECR
+      id: build-image
+      uses: mamezou-tech/buildpacks-action@master
+      with:
+        registry: ${{ steps.login-ecr.outputs.registry }}
+        image: 'foo-app'
+        tag: '1.0.0'
+        path: 'path/to/foo-app/'
+        builder: 'heroku/buildpacks:18'
+        publish: true
+
+    - name: Update Task Definition and Service
