@@ -26,8 +26,12 @@ inputs:
     required: false
   registry:
     description: 'Image repository for publishing'
+    required: true
   publish:
     description: 'Set true to push image to registry'
+    required: false
+  clearcache:
+    description: Set true to don't use cache
     required: false
 outputs:
   command:

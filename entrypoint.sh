@@ -34,7 +34,12 @@ if [ -n "$INPUT_PUBLISH" ]; then
   publish=" --publish"
 fi
 
-command="pack build ${image_name} ${env_str} --path ${INPUT_PATH} ${buildpacks} --builder ${INPUT_BUILDER} ${publish}"
+clear_cache=""
+if [ -n "$INPUT_CLEARCACHE" ]; then
+  clear_cache=" --clear-cache"
+fi
+
+command="pack build ${image_name} ${env_str} --path ${INPUT_PATH} ${buildpacks} --builder ${INPUT_BUILDER} ${publish} ${clear_cache}"
 echo "::set-output name=command::${command}"
 echo "::set-output name=image-name::${image_name}"
 docker login --username AWS -p $(aws ecr get-login-password --region ${AWS_REGION}) ${INPUT_REGISTRY}
